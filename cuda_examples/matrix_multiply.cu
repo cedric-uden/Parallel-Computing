@@ -53,6 +53,8 @@ int main() {
             a_cpu[TARGET_INDEX] = zeile;
             b_cpu[TARGET_INDEX] = spalte + 2;
             ergebnis_cpu[TARGET_INDEX] = 0;
+            a_gpu[TARGET_INDEX] = zeile;
+            b_gpu[TARGET_INDEX] = spalte + 2;
             ergebnis_gpu[TARGET_INDEX] = 0;
         }
     }
