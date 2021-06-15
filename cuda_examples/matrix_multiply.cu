@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <assert.h>
+#include <iostream>
+#include <string.h>
+#include "Runtime_Analysis.h"
 
 #define TARGET_INDEX (zeile * N + spalte)
 #define N 64        // Dimension, Hoehe und Breite der Matritzen
@@ -65,17 +68,28 @@ int main() {
                           (N / threads_per_block.y) + 1,
                           1);    //Zweidimensionales Grid, z = 1
 
+    auto *timer_gpu = new Runtime_Analysis("TimerGPU");
+    timer_gpu->setStart();
     matrixMultiplyGPU <<<number_of_blocks, threads_per_block>>>(a_gpu, b_gpu,
                                                                 ergebnis_gpu);
+    timer_gpu->setEnd();
+    std::cout << timer_gpu->print(TimerUnits::microseconds).rdbuf();
 
     cudaDeviceSynchronize();
 
 //    printf("\n");
 
+    auto *timer_cpu = new Runtime_Analysis("TimerCPU");
+    timer_cpu->setStart();
     matrixMultiplyCPU(a_cpu, b_cpu, ergebnis_cpu);
+    timer_cpu->setEnd();
+    std::cout << timer_cpu->print(TimerUnits::microseconds).rdbuf();
 
     bool error = false;
 
+
+    auto *timer_comparison = new Runtime_Analysis("Timer compare both arrays");
+    timer_comparison->setStart();
     for (int zeile = 0; zeile < N && !error; ++zeile) {
 
         for (int spalte = 0; spalte < N && !error; ++spalte) {
@@ -92,6 +106,8 @@ int main() {
             }
         }
     }
+    timer_comparison->setEnd();
+    std::cout << timer_comparison->print(TimerUnits::microseconds).rdbuf();
     if (!error) {
         printf("Erfolg!\n");
     }
