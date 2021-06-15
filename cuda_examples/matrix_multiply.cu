@@ -14,8 +14,8 @@
 
 #define N 512        // Dimension: width and height of matrix
 
-#define THREADS_PER_BLOCK_x 128
-#define THREADS_PER_BLOCK_y 128
+#define THREADS_PER_BLOCK_x 1024
+#define THREADS_PER_BLOCK_y 1024
 
 #define TEST_TIMER_TIME false
 
