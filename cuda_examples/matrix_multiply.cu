@@ -11,6 +11,7 @@ __global__ void matrixMultiplyGPU(int *a, int *b, int *ergebnis) {
     int spalte = blockIdx.y * blockDim.y + threadIdx.y;
 
     if (zeile < N && spalte < N) {
+        printf("%d,%d;", zeile, spalte);
         for (int k = 0; k < N; ++k) {
             akkumulator += a[zeile * N + k] * b[k * N + spalte];
         }
@@ -66,12 +67,19 @@ int main() {
 
     cudaDeviceSynchronize();
 
+    printf("\n");
+
     matrixMultiplyCPU(a_cpu, b_cpu, ergebnis_cpu);
 
     bool error = false;
 
     for (int zeile = 0; zeile < N && !error; ++zeile) {
+
         for (int spalte = 0; spalte < N && !error; ++spalte) {
+
+            printf("Values on \t\tGPU: %d\t\tCPU: %d\t\t\t", ergebnis_gpu[TARGET_INDEX], ergebnis_cpu[TARGET_INDEX]);
+            printf("at index %d\n", TARGET_INDEX);
+
             if (ergebnis_gpu[TARGET_INDEX] !=
                 ergebnis_cpu[TARGET_INDEX]) {
                 printf("Fehler in Matrixmultiplikation an der Stelle ergebnis[%d][%d]\n",
