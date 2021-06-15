@@ -93,10 +93,9 @@ int main() {
 //            printf("Values on \t\tGPU: %d\t\tCPU: %d\t\t\t", result_gpu[TARGET_INDEX], result_cpu[TARGET_INDEX]);
 //            printf("at index %d\n", TARGET_INDEX);
 
-            if (result_gpu[TARGET_INDEX] !=
-                result_cpu[TARGET_INDEX]) {
-                printf("Error in matrix multiplication at position[%d][%d]\n",
-                       row, col);
+            char* error_message = "Error in matrix multiplication at position ";
+            if (result_gpu[TARGET_INDEX] != result_cpu[TARGET_INDEX]) {
+                printf("%s[%d][%d]\n", error_message, row, col);
                 error = true;
                 break;
             }
