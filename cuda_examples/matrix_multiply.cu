@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 
+#define TARGET_INDEX (zeile * N + spalte)
 #define N 64        // Dimension, Hoehe und Breite der Matritzen
 
 __global__ void matrixMultiplyGPU(int *a, int *b, int *ergebnis) {
@@ -13,7 +14,7 @@ __global__ void matrixMultiplyGPU(int *a, int *b, int *ergebnis) {
         for (int k = 0; k < N; ++k) {
             akkumulator += a[zeile * N + k] * b[k * N + spalte];
         }
-        ergebnis[zeile * N + spalte] = akkumulator;
+        ergebnis[TARGET_INDEX] = akkumulator;
     }
 }
 
@@ -25,7 +26,7 @@ void matrixMultiplyCPU(int *a, int *b, int *ergebnis) {
             for (int k = 0; k < N; ++k) {
                 akkumulator += a[zeile * N + k] * b[k * N + spalte];
             }
-            ergebnis[zeile * N + spalte] = akkumulator;
+            ergebnis[TARGET_INDEX] = akkumulator;
         }
     }
 }
@@ -48,10 +49,10 @@ int main() {
     // Initialisieren der Matritzen
     for (int zeile = 0; zeile < N; ++zeile) {
         for (int spalte = 0; spalte < N; ++spalte) {
-            a_cpu[zeile * N + spalte] = zeile;
-            b_cpu[zeile * N + spalte] = spalte + 2;
-            ergebnis_cpu[zeile * N + spalte] = 0;
-            ergebnis_gpu[zeile * N + spalte] = 0;
+            a_cpu[TARGET_INDEX] = zeile;
+            b_cpu[TARGET_INDEX] = spalte + 2;
+            ergebnis_cpu[TARGET_INDEX] = 0;
+            ergebnis_gpu[TARGET_INDEX] = 0;
         }
     }
 
@@ -71,8 +72,8 @@ int main() {
 
     for (int zeile = 0; zeile < N && !error; ++zeile) {
         for (int spalte = 0; spalte < N && !error; ++spalte) {
-            if (ergebnis_gpu[zeile * N + spalte] !=
-                ergebnis_cpu[zeile * N + spalte]) {
+            if (ergebnis_gpu[TARGET_INDEX] !=
+                ergebnis_cpu[TARGET_INDEX]) {
                 printf("Fehler in Matrixmultiplikation an der Stelle ergebnis[%d][%d]\n",
                        zeile, spalte);
                 error = true;
