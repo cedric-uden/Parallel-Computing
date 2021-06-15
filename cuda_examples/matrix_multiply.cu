@@ -57,7 +57,8 @@ int main() {
         }
     }
 
-    dim3 threads_per_block(26, 16, 1);    // 16 x 16 Block-Threads
+
+    dim3 threads_per_block(16, 16, 1);    // 16 x 16 Block-Threads
     dim3 number_of_blocks((N / threads_per_block.x) + 1,
                           (N / threads_per_block.y) + 1,
                           1);    //Zweidimensionales Grid, z = 1
