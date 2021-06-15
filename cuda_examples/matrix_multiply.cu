@@ -14,6 +14,9 @@
 #define THREADS_PER_BLOCK_x 16
 #define THREADS_PER_BLOCK_y 16
 
+#define TEST_TIMER_TIME true
+
+
 #define TARGET_INDEX (row * N + col)
 
 __global__ void matrixMultiplyGPU(int *a, int *b, int *result) {
@@ -50,10 +53,21 @@ void initMatrix(int *a, int *b, int *result) {
     }
 }
 
+void testTimerTime() {
+    auto *timer_test_time = new Runtime_Analysis("Timer GPU Computation");
+    timer_test_time->setStart();
+    timer_test_time->setEnd();
+    std::cout << timer_test_time->print(TimerUnits::nanoseconds).rdbuf();
+}
+
 int main() {
     int *a_cpu, *b_cpu, *result_cpu;
     int *a_gpu, *b_gpu, *result_gpu;
     int size = N * N * sizeof(int);
+
+    if (TEST_TIMER_TIME) {
+        testTimerTime();
+    }
 
     if (RUN_GPU) {
         // Allocate memory on GPU
