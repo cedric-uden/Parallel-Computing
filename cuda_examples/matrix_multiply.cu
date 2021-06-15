@@ -4,9 +4,9 @@
 #include <string.h>
 #include "Runtime_Analysis.h"
 
-#define RUN_GPU true
-#define RUN_CPU true
-#define VERIFY_ARRAYS_MATCH true
+#define RUN_GPU false
+#define RUN_CPU false
+#define VERIFY_ARRAYS_MATCH false
 
 
 #define N 512        // Dimension: width and height of matrix
