@@ -12,7 +12,7 @@
 //#define UNIT microseconds
 #define UNIT nanoseconds
 
-#define N 1440        // Dimension: width and height of matrix
+#define N 2880        // Dimension: width and height of matrix
 
 #define THREADS_PER_BLOCK_x 16
 #define THREADS_PER_BLOCK_y 16
