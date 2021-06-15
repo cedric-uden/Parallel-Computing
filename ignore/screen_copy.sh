@@ -5,7 +5,7 @@
 
 
 DEFAULT_TIMEOUT=0.15
-PROCESSING_TIMEOUT=20
+PROCESSING_TIMEOUT=185
 
 ###################################
 
