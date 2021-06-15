@@ -4,61 +4,57 @@
 #include <string.h>
 #include "Runtime_Analysis.h"
 
-#define TARGET_INDEX (zeile * N + spalte)
-#define N 64        // Dimension, Hoehe und Breite der Matritzen
+#define TARGET_INDEX (row * N + column)
+#define N 64        // Dimension: width and height of matrix
 
-__global__ void matrixMultiplyGPU(int *a, int *b, int *ergebnis) {
-    int akkumulator = 0;
+__global__ void matrixMultiplyGPU(int *a, int *b, int *result) {
 
-    int zeile = blockIdx.x * blockDim.x + threadIdx.x;
-    int spalte = blockIdx.y * blockDim.y + threadIdx.y;
+    int row = blockIdx.x * blockDim.x + threadIdx.x;
+    int column = blockIdx.y * blockDim.y + threadIdx.y;
 
-    if (zeile < N && spalte < N) {
-//        printf("%d,%d;", zeile, spalte);
+    if (row < N && column < N) {
+//        printf("%d,%d;", row, column);
         for (int k = 0; k < N; ++k) {
-            akkumulator = a[zeile * N + k] * b[k * N + spalte];
+            result[TARGET_INDEX] = a[row * N + k] * b[k * N + column];
         }
-        ergebnis[TARGET_INDEX] = akkumulator;
     }
 }
 
-void matrixMultiplyCPU(int *a, int *b, int *ergebnis) {
-    int akkumulator = 0;    // Ergebnis-"Akkumulator" für Zwischenwerte
+void matrixMultiplyCPU(int *a, int *b, int *result) {
 
-    for (int zeile = 0; zeile < N; ++zeile) {
-        for (int spalte = 0; spalte < N; ++spalte) {
+    for (int row = 0; row < N; ++row) {
+        for (int column = 0; column < N; ++column) {
             for (int k = 0; k < N; ++k) {
-                akkumulator = a[zeile * N + k] * b[k * N + spalte];
+                result[TARGET_INDEX] = a[row * N + k] * b[k * N + column];
             }
-            ergebnis[TARGET_INDEX] = akkumulator;
         }
     }
 }
 
 int main() {
-    int *a_cpu, *b_cpu, *ergebnis_cpu;
-    int *a_gpu, *b_gpu, *ergebnis_gpu;
+    int *a_cpu, *b_cpu, *result_cpu;
+    int *a_gpu, *b_gpu, *result_gpu;
     int size = N * N * sizeof(int);
 
     // Allocate memory on CPU
     a_cpu = (int *) malloc(size);
     b_cpu = (int *) malloc(size);
-    ergebnis_cpu = (int *) malloc(size);
+    result_cpu = (int *) malloc(size);
 
     // Allocate memory on GPU
     cudaMallocManaged(&a_gpu, size);
     cudaMallocManaged(&b_gpu, size);
-    cudaMallocManaged(&ergebnis_gpu, size);
+    cudaMallocManaged(&result_gpu, size);
 
-    // Initialisieren der Matritzen
-    for (int zeile = 0; zeile < N; ++zeile) {
-        for (int spalte = 0; spalte < N; ++spalte) {
-            a_cpu[TARGET_INDEX] = zeile;
-            b_cpu[TARGET_INDEX] = spalte + 2;
-            ergebnis_cpu[TARGET_INDEX] = 0;
-            a_gpu[TARGET_INDEX] = zeile;
-            b_gpu[TARGET_INDEX] = spalte + 2;
-            ergebnis_gpu[TARGET_INDEX] = 0;
+    // Initialize Matrices
+    for (int row = 0; row < N; ++row) {
+        for (int column = 0; column < N; ++column) {
+            a_cpu[TARGET_INDEX] = row;
+            b_cpu[TARGET_INDEX] = column + 2;
+            result_cpu[TARGET_INDEX] = 0;
+            a_gpu[TARGET_INDEX] = row;
+            b_gpu[TARGET_INDEX] = column + 2;
+            result_gpu[TARGET_INDEX] = 0;
         }
     }
 
@@ -66,12 +62,12 @@ int main() {
     dim3 threads_per_block(16, 16, 1);    // 16 x 16 Block-Threads
     dim3 number_of_blocks((N / threads_per_block.x) + 1,
                           (N / threads_per_block.y) + 1,
-                          1);    //Zweidimensionales Grid, z = 1
+                          1);    // Two-Dimensional Grid: z = 1
 
     auto *timer_gpu = new Runtime_Analysis("TimerGPU");
     timer_gpu->setStart();
     matrixMultiplyGPU <<<number_of_blocks, threads_per_block>>>(a_gpu, b_gpu,
-                                                                ergebnis_gpu);
+                                                                result_gpu);
     timer_gpu->setEnd();
     std::cout << timer_gpu->print(TimerUnits::microseconds).rdbuf();
 
@@ -81,7 +77,7 @@ int main() {
 
     auto *timer_cpu = new Runtime_Analysis("TimerCPU");
     timer_cpu->setStart();
-    matrixMultiplyCPU(a_cpu, b_cpu, ergebnis_cpu);
+    matrixMultiplyCPU(a_cpu, b_cpu, result_cpu);
     timer_cpu->setEnd();
     std::cout << timer_cpu->print(TimerUnits::microseconds).rdbuf();
 
@@ -90,17 +86,17 @@ int main() {
 
     auto *timer_comparison = new Runtime_Analysis("Timer compare both arrays");
     timer_comparison->setStart();
-    for (int zeile = 0; zeile < N && !error; ++zeile) {
+    for (int row = 0; row < N && !error; ++row) {
 
-        for (int spalte = 0; spalte < N && !error; ++spalte) {
+        for (int column = 0; column < N && !error; ++column) {
 
-//            printf("Values on \t\tGPU: %d\t\tCPU: %d\t\t\t", ergebnis_gpu[TARGET_INDEX], ergebnis_cpu[TARGET_INDEX]);
+//            printf("Values on \t\tGPU: %d\t\tCPU: %d\t\t\t", result_gpu[TARGET_INDEX], result_cpu[TARGET_INDEX]);
 //            printf("at index %d\n", TARGET_INDEX);
 
-            if (ergebnis_gpu[TARGET_INDEX] !=
-                ergebnis_cpu[TARGET_INDEX]) {
-                printf("Fehler in Matrixmultiplikation an der Stelle ergebnis[%d][%d]\n",
-                       zeile, spalte);
+            if (result_gpu[TARGET_INDEX] !=
+                result_cpu[TARGET_INDEX]) {
+                printf("Error in matrix multiplication at position[%d][%d]\n",
+                       row, column);
                 error = true;
                 break;
             }
@@ -109,16 +105,16 @@ int main() {
     timer_comparison->setEnd();
     std::cout << timer_comparison->print(TimerUnits::microseconds).rdbuf();
     if (!error) {
-        printf("Erfolg!\n");
+        printf("Success!\n");
     }
 
     cudaFree(a_gpu);
     cudaFree(b_gpu);
-    cudaFree(ergebnis_gpu);
+    cudaFree(result_gpu);
 
     free(a_cpu);
     free(b_cpu);
-    free(ergebnis_cpu);
+    free(result_cpu);
 
     return 0;
 }
