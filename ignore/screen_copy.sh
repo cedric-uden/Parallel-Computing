@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# automate testing of different runtime configurations
+# view `test_setup.png` to view the screen layout
+
+
 DEFAULT_TIMEOUT=0.2
 PROCESSING_TIMEOUT=1.2
 
