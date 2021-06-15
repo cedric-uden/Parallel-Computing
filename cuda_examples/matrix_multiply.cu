@@ -4,17 +4,17 @@
 #include <string.h>
 #include "Runtime_Analysis.h"
 
-#define RUN_GPU false
-#define RUN_CPU false
+#define RUN_GPU true
+#define RUN_CPU true
 #define VERIFY_ARRAYS_MATCH false
 
 
-#define N 512        // Dimension: width and height of matrix
+#define N 256        // Dimension: width and height of matrix
 
 #define THREADS_PER_BLOCK_x 16
 #define THREADS_PER_BLOCK_y 16
 
-#define TEST_TIMER_TIME true
+#define TEST_TIMER_TIME false
 
 
 #define TARGET_INDEX (row * N + col)
