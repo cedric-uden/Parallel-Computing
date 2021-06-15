@@ -91,9 +91,9 @@ int main() {
                 break;
             }
         }
-        if (!error) {
-            printf("Erfolg!\n");
-        }
+    }
+    if (!error) {
+        printf("Erfolg!\n");
     }
 
     cudaFree(a_gpu);
