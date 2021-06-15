@@ -8,6 +8,9 @@
 #define RUN_CPU false
 #define VERIFY_ARRAYS_MATCH false
 
+//#define UNIT milliseconds
+//#define UNIT microseconds
+#define UNIT nanoseconds
 
 #define N 256        // Dimension: width and height of matrix
 
@@ -57,7 +60,7 @@ void testTimerTime() {
     auto *timer_test_time = new Runtime_Analysis("Timer GPU Computation");
     timer_test_time->setStart();
     timer_test_time->setEnd();
-    std::cout << timer_test_time->print(TimerUnits::nanoseconds).rdbuf();
+    std::cout << timer_test_time->print(TimerUnits::UNIT).rdbuf();
 }
 
 int main() {
@@ -91,7 +94,7 @@ int main() {
         matrixMultiplyGPU <<<number_of_blocks, threads_per_block>>>(a_gpu, b_gpu, result_gpu);
         //
         timer_gpu->setEnd();
-        std::cout << timer_gpu->print(TimerUnits::microseconds).rdbuf();
+        std::cout << timer_gpu->print(TimerUnits::UNIT).rdbuf();
 
         auto *timer_sync = new Runtime_Analysis("Timer GPU Synchronize");
         timer_sync->setStart();
@@ -99,9 +102,9 @@ int main() {
         cudaDeviceSynchronize();
         //
         timer_sync->setEnd();
-        std::cout << timer_sync->print(TimerUnits::microseconds).rdbuf();
+        std::cout << timer_sync->print(TimerUnits::UNIT).rdbuf();
         timer_gpu_total->setEnd();
-        std::cout << timer_gpu_total->print(TimerUnits::microseconds).rdbuf();
+        std::cout << timer_gpu_total->print(TimerUnits::UNIT).rdbuf();
     }
 
 
@@ -117,7 +120,7 @@ int main() {
         timer_cpu->setStart();
         matrixMultiplyCPU(a_cpu, b_cpu, result_cpu);
         timer_cpu->setEnd();
-        std::cout << timer_cpu->print(TimerUnits::microseconds).rdbuf();
+        std::cout << timer_cpu->print(TimerUnits::UNIT).rdbuf();
     }
 
 
@@ -143,7 +146,7 @@ int main() {
         if (!error) {
             printf("Success! ");
         }
-        std::cout << timer_comparison->print(TimerUnits::microseconds).rdbuf();
+        std::cout << timer_comparison->print(TimerUnits::UNIT).rdbuf();
     }
 
 
