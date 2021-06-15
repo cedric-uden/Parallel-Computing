@@ -40,3 +40,14 @@ add_executable(${PROJECT_NAME} hello_world/hello_world_in_cuda.cu runtime_analys
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "hello_world_in_cuda")
 
 # ----------------------------------------------------------------------------------------------------------------------
+
+# CUDA program file settings
+project(matrix_multiply LANGUAGES CUDA)
+
+include_directories(runtime_analysis)
+include_directories(cuda_examples)
+set(CMAKE_CUDA_COMPILER /usr/bin/nvcc)
+add_executable(${PROJECT_NAME} runtime_analysis/Runtime_Analysis.cpp runtime_analysis/Runtime_Analysis.h cuda_examples/matrix_multiply.cu)
+set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "matrix_multiply")
+
+# ----------------------------------------------------------------------------------------------------------------------
