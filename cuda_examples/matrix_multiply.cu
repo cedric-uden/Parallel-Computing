@@ -60,17 +60,32 @@ int main() {
         cudaMallocManaged(&result_gpu, size);
         initMatrix(a_gpu, b_gpu, result_gpu);
 
+        // prepare cuda values
         dim3 threads_per_block(16, 16, 1);    // 16 x 16 Block-Threads
         dim3 number_of_blocks((N / threads_per_block.x) + 1,
                               (N / threads_per_block.y) + 1,
                               1);    // Two-Dimensional Grid: z = 1
-        auto *timer_gpu = new Runtime_Analysis("TimerGPU");
+
+        // start with the timer
+        auto *timer_gpu_total = new Runtime_Analysis("Timer GPU Total");
+        timer_gpu_total->setStart();
+        auto *timer_gpu = new Runtime_Analysis("Timer GPU Computation");
         timer_gpu->setStart();
+        /////////////// compute matrix multiplication
         matrixMultiplyGPU <<<number_of_blocks, threads_per_block>>>(a_gpu, b_gpu, result_gpu);
+        //
         timer_gpu->setEnd();
         std::cout << timer_gpu->print(TimerUnits::microseconds).rdbuf();
 
+        auto *timer_sync = new Runtime_Analysis("Timer GPU Synchronize");
+        timer_sync->setStart();
+        /////////////// synchronize
         cudaDeviceSynchronize();
+        //
+        timer_sync->setEnd();
+        std::cout << timer_sync->print(TimerUnits::microseconds).rdbuf();
+        timer_gpu_total->setEnd();
+        std::cout << timer_gpu_total->print(TimerUnits::microseconds).rdbuf();
     }
 
 
