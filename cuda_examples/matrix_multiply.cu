@@ -13,7 +13,7 @@ __global__ void matrixMultiplyGPU(int *a, int *b, int *ergebnis) {
     if (zeile < N && spalte < N) {
         printf("%d,%d;", zeile, spalte);
         for (int k = 0; k < N; ++k) {
-            akkumulator += a[zeile * N + k] * b[k * N + spalte];
+            akkumulator = a[zeile * N + k] * b[k * N + spalte];
         }
         ergebnis[TARGET_INDEX] = akkumulator;
     }
@@ -25,7 +25,7 @@ void matrixMultiplyCPU(int *a, int *b, int *ergebnis) {
     for (int zeile = 0; zeile < N; ++zeile) {
         for (int spalte = 0; spalte < N; ++spalte) {
             for (int k = 0; k < N; ++k) {
-                akkumulator += a[zeile * N + k] * b[k * N + spalte];
+                akkumulator = a[zeile * N + k] * b[k * N + spalte];
             }
             ergebnis[TARGET_INDEX] = akkumulator;
         }
