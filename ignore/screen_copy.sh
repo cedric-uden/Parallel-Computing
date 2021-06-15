@@ -4,8 +4,8 @@
 # view `test_setup.png` to view the screen layout
 
 
-DEFAULT_TIMEOUT=0.3
-PROCESSING_TIMEOUT=2
+DEFAULT_TIMEOUT=0.15
+PROCESSING_TIMEOUT=20
 
 ###################################
 
@@ -80,20 +80,20 @@ sleep $DEFAULT_TIMEOUT
 copy_and_paste
 sleep $DEFAULT_TIMEOUT
 
-# next_cell
-next_row
+next_cell
+# next_row
 sleep $DEFAULT_TIMEOUT
 
 
 
 
-# xdotool mousemove 5020 1980
-# sleep $DEFAULT_TIMEOUT
+xdotool mousemove 5020 1980
+sleep $DEFAULT_TIMEOUT
 
-# double_click
-# sleep $DEFAULT_TIMEOUT
+double_click
+sleep $DEFAULT_TIMEOUT
 
-# copy_and_paste
-# sleep $DEFAULT_TIMEOUT
+copy_and_paste
+sleep $DEFAULT_TIMEOUT
 
-# next_row
+next_row

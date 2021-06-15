@@ -5,17 +5,17 @@
 #include "Runtime_Analysis.h"
 
 #define RUN_GPU true
-#define RUN_CPU false
+#define RUN_CPU true
 #define VERIFY_ARRAYS_MATCH false
 
 //#define UNIT milliseconds
 //#define UNIT microseconds
 #define UNIT nanoseconds
 
-#define N 512        // Dimension: width and height of matrix
+#define N 1440        // Dimension: width and height of matrix
 
-#define THREADS_PER_BLOCK_x 65536
-#define THREADS_PER_BLOCK_y 65536
+#define THREADS_PER_BLOCK_x 128
+#define THREADS_PER_BLOCK_y 128
 
 #define TEST_TIMER_TIME false
 
