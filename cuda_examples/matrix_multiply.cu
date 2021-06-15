@@ -4,18 +4,18 @@
 #include <string.h>
 #include "Runtime_Analysis.h"
 
-#define TARGET_INDEX (row * N + column)
+#define TARGET_INDEX (row * N + col)
 #define N 64        // Dimension: width and height of matrix
 
 __global__ void matrixMultiplyGPU(int *a, int *b, int *result) {
 
     int row = blockIdx.x * blockDim.x + threadIdx.x;
-    int column = blockIdx.y * blockDim.y + threadIdx.y;
+    int col = blockIdx.y * blockDim.y + threadIdx.y;
 
-    if (row < N && column < N) {
-//        printf("%d,%d;", row, column);
+    if (row < N && col < N) {
+//        printf("%d,%d;", row, col);
         for (int k = 0; k < N; ++k) {
-            result[TARGET_INDEX] = a[row * N + k] * b[k * N + column];
+            result[TARGET_INDEX] = a[row * N + k] * b[k * N + col];
         }
     }
 }
@@ -23,9 +23,9 @@ __global__ void matrixMultiplyGPU(int *a, int *b, int *result) {
 void matrixMultiplyCPU(int *a, int *b, int *result) {
 
     for (int row = 0; row < N; ++row) {
-        for (int column = 0; column < N; ++column) {
+        for (int col = 0; col < N; ++col) {
             for (int k = 0; k < N; ++k) {
-                result[TARGET_INDEX] = a[row * N + k] * b[k * N + column];
+                result[TARGET_INDEX] = a[row * N + k] * b[k * N + col];
             }
         }
     }
@@ -48,12 +48,12 @@ int main() {
 
     // Initialize Matrices
     for (int row = 0; row < N; ++row) {
-        for (int column = 0; column < N; ++column) {
+        for (int col = 0; col < N; ++col) {
             a_cpu[TARGET_INDEX] = row;
-            b_cpu[TARGET_INDEX] = column + 2;
+            b_cpu[TARGET_INDEX] = col + 2;
             result_cpu[TARGET_INDEX] = 0;
             a_gpu[TARGET_INDEX] = row;
-            b_gpu[TARGET_INDEX] = column + 2;
+            b_gpu[TARGET_INDEX] = col + 2;
             result_gpu[TARGET_INDEX] = 0;
         }
     }
@@ -88,7 +88,7 @@ int main() {
     timer_comparison->setStart();
     for (int row = 0; row < N && !error; ++row) {
 
-        for (int column = 0; column < N && !error; ++column) {
+        for (int col = 0; col < N && !error; ++col) {
 
 //            printf("Values on \t\tGPU: %d\t\tCPU: %d\t\t\t", result_gpu[TARGET_INDEX], result_cpu[TARGET_INDEX]);
 //            printf("at index %d\n", TARGET_INDEX);
@@ -96,7 +96,7 @@ int main() {
             if (result_gpu[TARGET_INDEX] !=
                 result_cpu[TARGET_INDEX]) {
                 printf("Error in matrix multiplication at position[%d][%d]\n",
-                       row, column);
+                       row, col);
                 error = true;
                 break;
             }
