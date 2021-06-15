@@ -9,8 +9,10 @@
 #define VERIFY_ARRAYS_MATCH true
 
 
-#define N 1024        // Dimension: width and height of matrix
+#define N 512        // Dimension: width and height of matrix
 
+#define THREADS_PER_BLOCK_x 16
+#define THREADS_PER_BLOCK_y 16
 
 #define TARGET_INDEX (row * N + col)
 
@@ -61,7 +63,7 @@ int main() {
         initMatrix(a_gpu, b_gpu, result_gpu);
 
         // prepare cuda values
-        dim3 threads_per_block(16, 16, 1);    // 16 x 16 Block-Threads
+        dim3 threads_per_block(THREADS_PER_BLOCK_x, THREADS_PER_BLOCK_y, 1);
         dim3 number_of_blocks((N / threads_per_block.x) + 1,
                               (N / threads_per_block.y) + 1,
                               1);    // Two-Dimensional Grid: z = 1
