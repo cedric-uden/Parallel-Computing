@@ -34,8 +34,9 @@ set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "hello_world_in_cpp
 # CUDA program file settings
 project(parallel_computing_in_cuda LANGUAGES CUDA)
 
+include_directories(runtime_analysis)
 set(CMAKE_CUDA_COMPILER /usr/bin/nvcc)
-add_executable(${PROJECT_NAME} hello_world/hello_world_in_cuda.cu)
+add_executable(${PROJECT_NAME} hello_world/hello_world_in_cuda.cu runtime_analysis/Runtime_Analysis.cpp runtime_analysis/Runtime_Analysis.h)
 set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "hello_world_in_cuda")
 
 # ----------------------------------------------------------------------------------------------------------------------
