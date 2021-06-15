@@ -4,7 +4,7 @@
 # view `test_setup.png` to view the screen layout
 
 
-DEFAULT_TIMEOUT=0.2
+DEFAULT_TIMEOUT=0.3
 PROCESSING_TIMEOUT=1.2
 
 ###################################

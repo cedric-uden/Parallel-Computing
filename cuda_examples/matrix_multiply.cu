@@ -9,13 +9,13 @@
 #define VERIFY_ARRAYS_MATCH false
 
 //#define UNIT milliseconds
-#define UNIT microseconds
-//#define UNIT nanoseconds
+//#define UNIT microseconds
+#define UNIT nanoseconds
 
 #define N 256        // Dimension: width and height of matrix
 
-#define THREADS_PER_BLOCK_x 32
-#define THREADS_PER_BLOCK_y 32
+#define THREADS_PER_BLOCK_x 128
+#define THREADS_PER_BLOCK_y 128
 
 #define TEST_TIMER_TIME false
 
