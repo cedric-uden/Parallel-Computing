@@ -15,8 +15,9 @@ endif::[]
 
 // requires the following attribute: `-a toc=left`
 :toc:
-:toclevels: 1
+:toclevels: 2
 :leveloffset: 1
+:toc-title: Inhaltsverzeichnis
 
 // title
 = CLion IDE Einrichten
