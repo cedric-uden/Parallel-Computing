@@ -1,5 +1,6 @@
 // preamble
 :imagesdir: ./media
+:icons: font
 
 // title
 = CLion IDE Einrichten
@@ -139,6 +140,8 @@ Hiermit können wir gleich testen, ob jetzt alles richtig eingerichtet ist. Wäh
 [#img-step7]
 .Run Configurations
 image::10-view_run_configurations.png[Run Configurations]
+
++++ <br> +++
 
 TIP: Falls dies nicht der Fall sein sollte, sind im folgenden `Troubleshooting` Abschnitt, noch einige Lösungswege 
 vorgeschlagen. Manchmal hängt sich das CMake Projekt an der falschen Stelle auf und führt zu Problemen. Diese 
