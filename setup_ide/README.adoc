@@ -1,6 +1,64 @@
 // preamble
 :imagesdir: ./media
 
+// title
+= CLion IDE Einrichten
+
+In diesem Dokument geht es um die Einrichtung der CLion IDE, zur Nutzung mit einem Remote Host.
+Das Ziel ist es, dass dieser Remote Host die Entwicklung mit der von 
+https://www.nvidia.com/de-de/about-nvidia/[NVIDIA] entwickelten -- Parallel Computing Plattform -- 
+https://developer.nvidia.com/about-cuda[CUDA] zu realisieren.
+ + 
+ +
+
+https://www.jetbrains.com/de-de/clion/download/[CLion kann hier heruntergeladen werden]. +
+Zusätzlich kann eine Vollversion als Student der Hochschule Karlsruhe, einfach & kostenlos, 
+https://www.jetbrains.com/shop/eform/students[hier beantragt] werden.
+
+
+Zu beginn, müssen wir uns mit dem Netzwerk der Hochschule verbinden und die Remote Hosts kennen. +
+Folgend nun 2 optionale Abschnitte, welche aufgeklappt noch weiter ins Details gehen.
+ +
+ +
+
+// 1st toggle list
++++ <details><summary> +++
+*Mit dem Netzwerk der Hochschule verbinden*
++++ </summary><div> +++
+
+https://vpn.hs-karlsruhe.de/+CSCOE+/logon.html#form_title_text[Der VPN Client kann hier heruntergeladen werden.]
+
+[#img-vpn]
+.Mit dem VPN verbinden
+image::01-connect_vpn.png[VPN Verbindung mit Cisco AnyConnect]
+
++++ </div></details> +++
+
+// 2nd toggle list
++++ <details><summary> +++
+*IP Adressen der Remote Hosts*
++++ </summary><div> +++
+
+Host1
+
+----
+10.162.17.130
+10.162.17.131
+----
+
+Host2
+
+----
+10.162.17.132
+10.162.17.133
+----
++++ </div></details> +++
+
+
+
+
+== CLion Einstellungen
+
 
 // now the text
 +++ <details><summary> +++
@@ -9,4 +67,7 @@
 [#img-trouble1]
 .Reload CMake Project
 image::08-troubleshooting_01-reload_cmake.png[Reload CMake Project]
+[#img-trouble2]
+.Invalidate Caches
+image::09-troubleshooting_02-invalidate_caches.png[Invalidate Caches]
 +++ </div></details> +++
