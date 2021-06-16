@@ -1,6 +1,3 @@
-// preamble
-:imagesdir: ./media
-
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
@@ -9,6 +6,10 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
+// why does it work here: https://gist.githubusercontent.com/mrhaki/3c7e52fe809fe805a8540b25b99e106b/raw/9ef85aab03456b5659b3322b2e61bcc803adc77f/icon-sample.adoc
+
+// preamble
+:imagesdir: ./media
 :icons: font
 
 // title
