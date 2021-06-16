@@ -1,0 +1,14 @@
++++ <details><summary> +++
+*Troubleshooting*
++++ </summary><div> +++
+----
+play {
+  http {
+    secret.key = asdf
+    secret.key = ${?SECRET_KEY}
+    ...
+  }
+  ...
+}
+----
++++ </div></details> +++
