@@ -13,6 +13,11 @@ endif::[]
 :icons: font
 :source-highlighter: rouge
 
+// requires the following attribute: `-a toc=left`
+:toc:
+:toclevels: 1
+:leveloffset: 1
+
 // title
 = CLion IDE Einrichten
 
@@ -196,11 +201,11 @@ image::12-launch_debugger.png[Debugger starten]
 
 +++ <br> +++
 
-== Appendix
+= Appendix
 
 Folgende Abschnitte gelten ausschließlich Vertiefung der Arbeit mit einem Remote Host System.
 
-=== Ausführbare Datei von der Kommandozeile
+== Ausführbare Datei von der Kommandozeile
 
 Wir können uns auch mit dem Remote Host über `SSH` direkt verbinden. Dort kann dann z.B. die Datei direkt ausgeführt 
 werden. Zum Verbindungsaufbau nutzen wir die in Windows integrierte Kommandozeile `cmd.exe`. 
@@ -218,7 +223,7 @@ Anschließend navigieren wir zu dem aus Screenshot "<<img-step8>>" bekannten Pfa
 image::14-run_in_cmd_line_on_remote_host.png[CUDA Datei direkt auf Remote Host ausführen]
 
 
-=== Eigenen CUDA Entwicklungsserver einrichten
+== Eigenen CUDA Entwicklungsserver einrichten
 
 Dieser Abschnitt ist der Einrichtung eines eigenen Entwicklungsserver gewidmet. Zur CUDA Entwicklung wird sowohl 
 eine Grafikkarte von NVIDIA benötigt als auch ein Linux System. Eine Liste mit kompatibler Hardware findet man
