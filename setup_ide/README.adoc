@@ -78,10 +78,34 @@ image::03-navigate_settings.png[Zu den richtigen Einstellungen navigieren]
 
 +++ <br> +++
 
-Nun sollte die Fläche rechts befüllbar sein. Hier konfigurieren wir zunächst eine neue Identität. [fuchsia]#(Schritt 1)# +
+Nun sollte die Fläche rechts befüllbar sein. Als erster Schritt, konfigurieren 
+wir zunächst eine neue Identität unter den Einstellungen der `Credentials`. [fuchsia]#(Schritt 1)# +
 [#img-step3]
+.SSH Identitäten Einstellung
+image::04-navigate_configure_host.png[SSH Identitäten Einstellung]
+
++++ <br> +++
+
+Hier geben wir nun die Informationen wie folgt ein:
+
+Host: einer der Hosts, wie am Anfang dieses Dokuments definiert. z.B. die `10.162.17.130`. [fuchsia]#(Schritt 1)# +
+User name: euer 8-stelliges IZ Kürzel. [fuchsia]#(Schritt 2)# +
+Password: euer Passwort. [fuchsia]#(Schritt 3)# +
+Zum Abschuss, können wir die Verbindung gleich testen. [fuchsia]#(Schritt 4)# +
+Wenn alles geklappt hat, müsste jetzt das Fenster `Successfully connected!` erscheinen. [fuchsia]#(Schritt 5)# +
+[#img-step4]
 .SSH Identität konfigurieren
-image::04-navigate_configure_host.png[SSH Identität konfigurieren]
+image::05-configure_host_and_test_connection.png[SSH Identität konfigurieren]
+
++++ <br> +++
+
+Nun sollte die `Toolchains` übersicht folgend aussehen. CMake, Make, C & C++ Compiler und der Debugger 
+sollten auf dem Remote Host gefunden werden.
+
+[#img-step5]
+.Toolchains erkannt
+image::06-verify_everything_found.png[Toolchains erkannt]
+
 
 +++ <br> +++
 
