@@ -124,14 +124,36 @@ image::06-verify_everything_found.png[Toolchains erkannt]
 
 +++ <br> +++
 
+Nach dem bestätigen, müsste jetzt im Hintergrund das Projekt mit den neuen Einstellungen 
+aktualisiert werden. In der untersten Leiste dürfte jetzt folgender Ladebalken sichtbar sein.
+
+[#img-step6]
+.CMake Projekt wird geladen
+image::07-verify_reloading_cmake.png[CMake Projekt wird geladen]
+
++++ <br> +++
+
+Nun müsste CLion anhand der CMake Datei, mindestens die folgenden Hello World Projekte zum ausführen finden.
+Hiermit können wir gleich testen, ob jetzt alles richtig eingerichtet ist. Wählt am besten das CUDA Projekt aus.
+
+[#img-step7]
+.Run Configurations
+image::10-view_run_configurations.png[Run Configurations]
+
+Falls dies nicht der Fall sein sollte, sind im folgenden `Troubleshooting` Abschnitt, noch einige Lösungswege 
+vorgeschlagen. Manchmal hängt sich das CMake Projekt an der falschen Stelle auf und führt zu Problemen. Diese 
+Methoden können helfen.
+
 +++ <details><summary> +++
 *Troubleshooting*
 +++ </summary><div> +++
-[#img-trouble1]
-.Reload CMake Project
-image::08-troubleshooting_01-reload_cmake.png[Reload CMake Project]
 
-[#img-trouble2]
-.Invalidate Caches
-image::09-troubleshooting_02-invalidate_caches.png[Invalidate Caches]
-+++ </div></details> +++
+Möglichkeit 1: CMake Projekt erneut laden lassen.
+
+image::08-troubleshooting_01-reload_cmake.png[alt="Reload CMake Project"]
+
+Möglichkeit 2: CLion Caches leeren und 
+https://images.rapgenius.com/cf4669309592a909fe8c561da1deddd0.310x310x28.gif[neu starten]
+
+image::09-troubleshooting_02-invalidate_caches.png[alt="Invalidate Caches"]
++++ <br></div></details> +++
