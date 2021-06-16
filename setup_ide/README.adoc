@@ -13,10 +13,12 @@ https://developer.nvidia.com/about-cuda[CUDA] zu realisieren.
 
 https://www.jetbrains.com/de-de/clion/download/[CLion kann hier heruntergeladen werden]. +
 Zusätzlich kann eine Vollversion als Student der Hochschule Karlsruhe, einfach & kostenlos, 
-https://www.jetbrains.com/shop/eform/students[hier beantragt] werden.
+https://www.jetbrains.com/shop/eform/students[hier beantragt] werden. +
+Diese Dokumentation wurde anhand der offiziellen Dokumentation vom Hersteller JetBrains erstellt. 
+https://www.jetbrains.com/help/clion/remote-projects-support.html[Diese ist hier zu finden]
 
 
-Zu beginn, müssen wir uns mit dem Netzwerk der Hochschule verbinden und die Remote Hosts kennen. +
+Zu Beginn, müssen wir uns mit dem Netzwerk der Hochschule verbinden und die Remote Hosts kennen. +
 Folgend nun 2 optionale Abschnitte, welche aufgeklappt noch weiter ins Details gehen.
  +
  +
@@ -55,18 +57,35 @@ Host2
 +++ </div></details> +++
 
 
-
-
 == CLion Einstellungen
 
+Zu Beginn, müssen wir die Einstellungen von CLion öffnen. Dazu rufen wir die (extrem praktische) 
+Suchfunktion von CLion auf, indem wir einen Doppelklick auf die `Shift`-Taste machen. 
+Anschließend, geben wir `Settings` in die Suchmaske ein und öffnen diese.
+[#img-step1]
+.Einstellungen aufrufen
+image::02-open_settings.png[Einstellungen in CLion öffnen]
 
-// now the text
+Als nächstes, navigieren wir in die `Build, Execution, Deployment` Einstellungen. [fuchsia]#(Schritt 1)# +
+Danach in die `Toolchains` Einstellungen. [fuchsia]#(Schritt 2)# +
+Dort fügen wir einen neuen Eintrag hinzu. [fuchsia]#(Schritt 3)# +
+Und wählen `Remote Host` aus. [fuchsia]#(Schritt 4)# +
+[#img-step2]
+.In Einstellungen navigieren
+image::03-navigate_settings.png[Zu den richtigen Einstellungen navigieren]
+
+Nun sollte die Fläche rechts befüllbar sein. Hier konfigurieren wir zunächst eine neue Identität. [fuchsia]#(Schritt 1)# +
+[#img-step3]
+.SSH Identität konfigurieren
+image::04-navigate_configure_host.png[SSH Identität konfigurieren]
+
 +++ <details><summary> +++
 *Troubleshooting*
 +++ </summary><div> +++
 [#img-trouble1]
 .Reload CMake Project
 image::08-troubleshooting_01-reload_cmake.png[Reload CMake Project]
+
 [#img-trouble2]
 .Invalidate Caches
 image::09-troubleshooting_02-invalidate_caches.png[Invalidate Caches]
