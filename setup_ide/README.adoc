@@ -18,25 +18,40 @@ Diese Dokumentation wurde anhand der offiziellen Dokumentation vom Hersteller Je
 https://www.jetbrains.com/help/clion/remote-projects-support.html[Diese ist hier zu finden.]
 
 
-Zu Beginn, müssen wir uns mit dem Netzwerk der Hochschule verbinden und die Remote Hosts kennen. +
-Folgend nun 2 optionale Abschnitte, welche aufgeklappt noch weiter ins Details gehen.
+Zu Beginn, müssen wir uns ein Beispiel Projekt laden, mit dem Netzwerk der Hochschule verbinden und die 
+Remote Hosts kennen. Folgend nun 3 optionale Abschnitte, welche aufgeklappt noch weiter ins Details gehen.
  +
  +
 
 // 1st toggle list
++++ <details><summary> +++
+*CUDA Beispiel Projekt herunterladen*
++++ </summary><div> +++
+
+Startet CLion und legt ein neues Projekt über `Get from VCS`. +
+Kopiert die unten beigefügte URL in das passende Fenster.
+
+----
+https://github.com/cedric-romain/Parallel-Computing.git
+----
+
+image:00-a-get_from_vcs.png[width=49%]
+image:00-b-get_from_vcs.png[width=49%]
+
++++ <br></div></details> +++
+
+// 2nd toggle list
 +++ <details><summary> +++
 *Mit dem Netzwerk der Hochschule verbinden*
 +++ </summary><div> +++
 
 https://vpn.hs-karlsruhe.de/+CSCOE+/logon.html#form_title_text[Der VPN Client kann hier heruntergeladen werden.]
 
-[#img-vpn]
-.Mit dem VPN verbinden
 image::01-connect_vpn.png[VPN Verbindung mit Cisco AnyConnect]
 
-+++ </div></details> +++
++++ <br></div></details> +++
 
-// 2nd toggle list
+// 3rd toggle list
 +++ <details><summary> +++
 *IP Adressen der Remote Hosts*
 +++ </summary><div> +++
@@ -54,7 +69,7 @@ Host2
 10.162.17.132
 10.162.17.133
 ----
-+++ </div></details> +++
++++ <br></div></details> +++
 
 
 == CLion Einstellungen
