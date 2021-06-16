@@ -1,14 +1,12 @@
+// preamble
+:imagesdir: ./media
+
+
+// now the text
 +++ <details><summary> +++
 *Troubleshooting*
 +++ </summary><div> +++
-----
-play {
-  http {
-    secret.key = asdf
-    secret.key = ${?SECRET_KEY}
-    ...
-  }
-  ...
-}
-----
+[#img-trouble1]
+.Reload CMake Project
+image::08-troubleshooting_01-reload_cmake.png[Reload CMake Project]
 +++ </div></details> +++
