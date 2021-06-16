@@ -11,6 +11,7 @@ endif::[]
 // preamble
 :imagesdir: ./media
 :icons: font
+:source-highlighter: rouge
 
 // title
 = CLion IDE Einrichten
@@ -194,3 +195,48 @@ Im unteren Bereich dürfen wir jetzt die Variablen zur Laufzeit betrachten. [fuc
 image::12-launch_debugger.png[Debugger starten]
 
 +++ <br> +++
+
+== Appendix
+
+Folgende Abschnitte gelten ausschließlich Vertiefung der Arbeit mit einem Remote Host System.
+
+=== Ausführbare Datei von der Kommandozeile
+
+Wir können uns auch mit dem Remote Host über `SSH` direkt verbinden. Dort kann dann z.B. die Datei direkt ausgeführt 
+werden. Zum Verbindungsaufbau nutzen wir die in Windows integrierte Kommandozeile `cmd.exe`. 
+Ein möglicher Ablauf könnte folgend aussehen.
+
+NOTE: seit dem Windows 10 Update im April 2018, ist `SSH` Standardmäßig in Windows integriert. 
+https://www.howtogeek.com/340688/whats-coming-in-windows-10s-redstone-4-update-available-march-2018/[(Quelle)]
+
+Zuerst verbinden wir uns mit dem Remote Host:
+
+image::13-ssh_to_verify.png[SSH Verbindung mit Remote Host]
+
+Anschließend navigieren wir zu dem aus Screenshot "<<img-step8>>" bekannten Pfad () und führen nun die Datei aus:
+
+image::14-run_in_cmd_line_on_remote_host.png[CUDA Datei direkt auf Remote Host ausführen]
+
+
+=== Eigenen CUDA Entwicklungsserver einrichten
+
+Dieser Abschnitt ist der Einrichtung eines eigenen Entwicklungsserver gewidmet. Zur CUDA Entwicklung wird sowohl 
+eine Grafikkarte von NVIDIA benötigt als auch ein Linux System. Eine Liste mit kompatibler Hardware findet man
+https://developer.nvidia.com/cuda-gpus#collapse4[hier].
+
+Das System zum testen dieses Dokuments wurde mit `Ubuntu 20.04 LTS` und einer NVIDIA GTX 970 erstellt.
+
+Dank des Paketverwaltungssytem `APT`, ging die Installation denkbar einfach. +
+Folgende Pakete wurden dafür benötigt und können mir diesen Befehlen direkt installiert werden:
+
+[source,sh]
+----
+sudo apt-get install -y openssh-server
+sudo apt-get install -y cmake
+sudo apt-get install -y g++
+sudo apt-get install -y gcc
+sudo apt-get install -y make
+sudo apt-get install -y rsync
+sudo apt-get install -y tar
+sudo apt-get install -y nvidia-cuda-toolkit  # Achtung: ca. 3 GB groß
+----
