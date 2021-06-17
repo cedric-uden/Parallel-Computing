@@ -90,7 +90,7 @@ Host2
 +++ <br></div></details> +++
 
 
-== CLion Einstellungen
+== Einstellungen öffnen
 
 Zu Beginn, müssen wir die Einstellungen von CLion öffnen. Dazu rufen wir die (extrem praktische) 
 Suchfunktion von CLion auf, indem wir einen Doppelklick auf die `Shift`-Taste machen. 
@@ -111,6 +111,8 @@ image::03-navigate_settings.png[Zu den richtigen Einstellungen navigieren]
 
 +++ <br> +++
 
+== Toolchain Einstellungen
+
 Nun sollte die Fläche rechts befüllbar sein. Als erster Schritt, konfigurieren 
 wir zunächst eine neue Identität unter den Einstellungen der `Credentials`. [fuchsia]#(Schritt 1)# +
 [#img-step3]
@@ -119,8 +121,9 @@ image::04-navigate_configure_host.png[SSH Identitäten Einstellung]
 
 +++ <br> +++
 
-Hier geben wir nun die Informationen wie folgt ein:
+== SSH Identität hinzufügen
 
+Hier geben wir nun die Informationen wie folgt ein: +
 Host: einer der Hosts, wie am Anfang dieses Dokuments definiert. z.B. die `10.162.17.130`. [fuchsia]#(Schritt 1)# +
 User name: euer 8-stelliges IZ Kürzel. [fuchsia]#(Schritt 2)# +
 Password: euer Passwort. [fuchsia]#(Schritt 3)# +
@@ -131,6 +134,8 @@ Wenn alles geklappt hat, müsste jetzt das Fenster `Successfully connected!` ers
 image::05-configure_host_and_test_connection.png[SSH Identität konfigurieren]
 
 +++ <br> +++
+
+== Toolchains Einrichtung abschließen
 
 Nun sollte die `Toolchains` übersicht folgend aussehen. CMake, Make, C & C++ Compiler und der Debugger 
 sollten auf dem Remote Host gefunden werden.
@@ -150,6 +155,8 @@ aktualisiert werden. In der untersten Leiste dürfte jetzt folgender Ladebalken 
 image::07-verify_reloading_cmake.png[CMake Projekt wird geladen]
 
 +++ <br> +++
+
+== Run Configuration aufsuchen
 
 Nun müsste CLion anhand der CMake Datei, mindestens die folgenden Hello World Projekte zum ausführen finden.
 Hiermit können wir gleich testen, ob jetzt alles richtig eingerichtet ist. Wählt am besten das CUDA Projekt aus.
@@ -180,6 +187,8 @@ image::09-troubleshooting_02-invalidate_caches.png[alt="Invalidate Caches"]
 
 +++ <br> +++
 
+= CUDA Projekt ausführen
+
 Nun können wir die Datei ausführen, indem wir auf das entsprechende Icon drücken. [fuchsia]#(Schritt 1)# +
 Unten sollte nun das `Run` Fenster erscheinen. Hier sehen wir den Pfad auf dem die ausführbare 
 Datei auf dem Remote Host läuft. [fuchsia]#(Schritt 2)# +
@@ -190,6 +199,8 @@ Und die Ausgabe des Programms. [fuchsia]#(Schritt 3)# +
 image::11-run_hello_world_and_check_path.png[CUDA Projekt Ausführen]
 
 +++ <br> +++
+
+== Debugger
 
 Und nun schauen wir uns noch kurz den Debugger an. Dies ist auf beim Entwickeln auf einem Remote Host 
 ebenfalls kein Problem.
