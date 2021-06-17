@@ -46,8 +46,8 @@ Remote Hosts kennen. Folgend nun 3 optionale Abschnitte, welche aufgeklappt noch
 *CUDA Beispiel Projekt herunterladen*
 +++ </summary><div> +++
 
-Startet CLion und legt ein neues Projekt über `Get from VCS`. +
-Kopiert die unten beigefügte URL in das passende Fenster.
+[fuchsia]#Schritt 1:# Startet CLion und legt ein neues Projekt über `Get from VCS`. +
+[fuchsia]#Schritt 2:# Kopiert die unten beigefügte URL in das Fenster.
 
 ----
 https://github.com/cedric-romain/Parallel-Computing.git
@@ -65,7 +65,8 @@ image:00-b-get_from_vcs.png[width=49%]
 
 https://vpn.hs-karlsruhe.de/+CSCOE+/logon.html#form_title_text[Der VPN Client kann hier heruntergeladen werden.]
 
-image::01-connect_vpn.png[VPN Verbindung mit Cisco AnyConnect, width=97%]
+image:01-a-connect_vpn.png[alt=VPN Verbindung mit Cisco AnyConnect,width=52%]
+image:01-b-connect_vpn.png[alt=VPN Verbindung mit Cisco AnyConnect,width=38%]
 
 +++ <br></div></details> +++
 
@@ -74,14 +75,14 @@ image::01-connect_vpn.png[VPN Verbindung mit Cisco AnyConnect, width=97%]
 *IP Adressen der Remote Hosts*
 +++ </summary><div> +++
 
-Host1
+Host1: `EIT-LangServ1`
 
 ----
 10.162.17.130
 10.162.17.131
 ----
 
-Host2
+Host2: `EIT-LangServ2`
 
 ----
 10.162.17.132
