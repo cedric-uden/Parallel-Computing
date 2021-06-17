@@ -17,7 +17,7 @@ endif::[]
 :toc:
 :toclevels: 2
 :leveloffset: 1
-:toc-title: Inhaltsverzeichnis
+:toc-title: [big]#Inhaltsverzeichnis#
 
 // title
 = CLion IDE Einrichten
