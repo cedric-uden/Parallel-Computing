@@ -65,7 +65,7 @@ image:00-b-get_from_vcs.png[width=49%]
 
 https://vpn.hs-karlsruhe.de/+CSCOE+/logon.html#form_title_text[Der VPN Client kann hier heruntergeladen werden.]
 
-image::01-connect_vpn.png[VPN Verbindung mit Cisco AnyConnect, width=90%]
+image::01-connect_vpn.png[VPN Verbindung mit Cisco AnyConnect, width=100%]
 
 +++ <br></div></details> +++
 
@@ -97,7 +97,7 @@ Suchfunktion von CLion auf, indem wir einen Doppelklick auf die `Shift`-Taste ma
 Anschließend, geben wir `Settings` in die Suchmaske ein und öffnen diese.
 [#img-step1]
 .Einstellungen aufrufen
-image::02-open_settings.png[Einstellungen in CLion öffnen, width=90%]
+image::02-open_settings.png[Einstellungen in CLion öffnen, width=100%]
 
 +++ <br> +++
 
@@ -107,7 +107,7 @@ Dort fügen wir einen neuen Eintrag hinzu. [fuchsia]#(Schritt 3)# +
 Und wählen `Remote Host` aus. [fuchsia]#(Schritt 4)# +
 [#img-step2]
 .In Einstellungen navigieren
-image::03-navigate_settings.png[Zu den richtigen Einstellungen navigieren, width=90%]
+image::03-navigate_settings.png[Zu den richtigen Einstellungen navigieren, width=100%]
 
 +++ <br> +++
 
@@ -117,7 +117,7 @@ Nun sollte die Fläche rechts befüllbar sein. Als erster Schritt, konfigurieren
 wir zunächst eine neue Identität unter den Einstellungen der `Credentials`. [fuchsia]#(Schritt 1)# +
 [#img-step3]
 .SSH Identitäten Einstellung
-image::04-navigate_configure_host.png[SSH Identitäten Einstellung, width=90%]
+image::04-navigate_configure_host.png[SSH Identitäten Einstellung, width=100%]
 
 +++ <br> +++
 
@@ -131,7 +131,7 @@ Zum Abschuss, können wir die Verbindung gleich testen. [fuchsia]#(Schritt 4)# +
 Wenn alles geklappt hat, müsste jetzt das Fenster `Successfully connected!` erscheinen. [fuchsia]#(Schritt 5)# +
 [#img-step4]
 .SSH Identität konfigurieren
-image::05-configure_host_and_test_connection.png[SSH Identität konfigurieren, width=90%]
+image::05-configure_host_and_test_connection.png[SSH Identität konfigurieren, width=100%]
 
 +++ <br> +++
 
@@ -142,7 +142,7 @@ sollten auf dem Remote Host gefunden werden.
 
 [#img-step5]
 .Toolchains erkannt
-image::06-verify_everything_found.png[Toolchains erkannt, width=90%]
+image::06-verify_everything_found.png[Toolchains erkannt, width=100%]
 
 
 +++ <br> +++
@@ -152,7 +152,7 @@ aktualisiert werden. In der untersten Leiste dürfte jetzt folgender Ladebalken 
 
 [#img-step6]
 .CMake Projekt wird geladen
-image::07-verify_reloading_cmake.png[CMake Projekt wird geladen, width=90%]
+image::07-verify_reloading_cmake.png[CMake Projekt wird geladen, width=100%]
 
 +++ <br> +++
 
@@ -163,7 +163,7 @@ Hiermit können wir gleich testen, ob jetzt alles richtig eingerichtet ist. Wäh
 
 [#img-step7]
 .Run Configurations
-image::10-view_run_configurations.png[Run Configurations, width=90%]
+image::10-view_run_configurations.png[Run Configurations, width=100%]
 
 +++ <br> +++
 
@@ -177,12 +177,12 @@ Methoden können helfen.
 
 Möglichkeit 1: CMake Projekt erneut laden lassen.
 
-image::08-troubleshooting_01-reload_cmake.png[alt="Reload CMake Project", width=90%]
+image::08-troubleshooting_01-reload_cmake.png[alt="Reload CMake Project", width=100%]
 
 Möglichkeit 2: CLion Caches leeren und 
 https://images.rapgenius.com/cf4669309592a909fe8c561da1deddd0.310x310x28.gif[neu starten]
 
-image::09-troubleshooting_02-invalidate_caches.png[alt="Invalidate Caches", width=90%]
+image::09-troubleshooting_02-invalidate_caches.png[alt="Invalidate Caches", width=100%]
 +++ <br></div></details> +++
 
 +++ <br> +++
@@ -196,7 +196,7 @@ Und die Ausgabe des Programms. [fuchsia]#(Schritt 3)# +
 
 [#img-step8]
 .CUDA Projekt Ausführen
-image::11-run_hello_world_and_check_path.png[CUDA Projekt Ausführen, width=90%]
+image::11-run_hello_world_and_check_path.png[CUDA Projekt Ausführen, width=100%]
 
 +++ <br> +++
 
@@ -209,7 +209,7 @@ Im unteren Bereich dürfen wir jetzt die Variablen zur Laufzeit betrachten. [fuc
 
 [#img-step8]
 .Debugger starten
-image::12-launch_debugger.png[Debugger starten, width=90%]
+image::12-launch_debugger.png[Debugger starten, width=100%]
 
 +++ <br> +++
 
@@ -232,7 +232,7 @@ image::13-ssh_to_verify.png[SSH Verbindung mit Remote Host, width=50%]
 
 Anschließend navigieren wir zu dem aus Screenshot "<<img-step8>>" bekannten Pfad () und führen nun die Datei aus:
 
-image::14-run_in_cmd_line_on_remote_host.png[CUDA Datei direkt auf Remote Host ausführen, width=90%]
+image::14-run_in_cmd_line_on_remote_host.png[CUDA Datei direkt auf Remote Host ausführen, width=100%]
 
 
 == Eigenen CUDA Entwicklungsserver einrichten
